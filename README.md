@@ -1,1 +1,1 @@
-# SLOD
+# Statistical Linear Object Detection project

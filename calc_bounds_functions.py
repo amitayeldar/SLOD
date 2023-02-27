@@ -8,6 +8,7 @@ Created on Mon Feb 20 16:50:30 2023
 @author: ofirkarin
 """
 
+
 def calc_lower_upper_bound(basis_functions_lst,config,grid_coordinates,int_to_cord,dim,step,num_of_fun):
     
     #%% Evaluate basis_functions on the grid
@@ -88,7 +89,7 @@ def function_eval(fun,grid_coordinates,int_to_cord):
     it = np.nditer(grid_coordinates[0],flags=['multi_index'])
     with it:
             while not it.finished:
-                fun_on_grid(it.multi_index) = fun(int_to_cord(it.multi_index))
+                fun_on_grid[it.multi_index] = fun(int_to_cord(it.multi_index))
                 it.iternext()
     return fun_on_grid 
 

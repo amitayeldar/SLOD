@@ -9,6 +9,7 @@ import numpy as np ;
 m = 3 ;
 d = 3 ;
 B = 4 ;
+grid_shape = [m for dim in range(d)]
 step = 2*B/(m-1);
 list_of_divided_intervals = [] ;
 for i in range(d):
@@ -17,7 +18,7 @@ for i in range(d):
 grid_coordinates = np.meshgrid(*list_of_divided_intervals, indexing="ij")
 
 def int_coor_to_real_coor(y):
-    return [grid_coordinates[i][tuple(y)] for i in range(d)]
+    return [grid_coordinates[i][y] for i in range(d)]
 
 def real_to_int(y):
     int_list = [];
@@ -25,5 +26,4 @@ def real_to_int(y):
         int_list.append(int((y[i]+B)/step))
     return int_list
 
-int_coord_list = [[np.unravel_index(range(m**d),[m,m,m])[i][j] for i in range(d)] for j in range(m**d)]
-real_coord_list = [int_coor_to_real_coor(int_coord_list[i]) for i in range(m**d)]
+pnt_coords = int_coor_to_real_coor(np.unravel_index(range(m**d),grid_shape))
